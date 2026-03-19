@@ -1,0 +1,10 @@
+groups:
+- name: registrator_alerts
+  rules:
+  - alert: RegistratorDown
+    expr: probe_success == 0 or probe_http_status_code != 200
+    for: 3m
+    labels:
+      severity: critical
+    annotations:
+      description: "Endpoint {{ $labels.instance }} is down or returned non-200 HTTP code."
