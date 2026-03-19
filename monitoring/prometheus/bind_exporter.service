@@ -1,0 +1,16 @@
+[Unit]
+Description=BIND Exporter
+After=network.target
+
+[Service]
+User=bindus
+Group=bindus
+Type=simple
+ExecStart=/usr/local/bin/bind_exporter \
+  --bind.stats-url=http://127.0.0.1:8053 \
+  --web.listen-address=:9119
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
