@@ -1,0 +1,53 @@
+---
+groups:
+- name: All
+  rules:
+  - alert: Instance down
+    expr: up{exported_job!~".+"} == 0
+    for: 3m
+    labels:
+      severity: major
+    annotations:
+      description: "{{ $labels.job }} {{ $labels.instance }} has been down for more than 5 min"
+
+  - alert: "OS: disk space usage critical"
+    expr: |
+      round((( node_filesystem_size_bytes{mountpoint!~"/boot.*"} - node_filesystem_avail_bytes ) / node_filesystem_size_bytes * 100), 0.01) > 90
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      description: "\n
+        instance: {{ $labels.instance }}\n
+        mountpoint: {{ $labels.mountpoint }}\n
+        free: {{ printf \"node_filesystem_avail_bytes{instance='%s',mountpoint='%s'}\" $labels.instance $labels.mountpoint | query | first | value | humanize1024 }}"
+      value: "{{ $value }}%"
+
+  - alert: High swap usage
+    expr: floor((node_memory_SwapTotal_bytes - node_memory_SwapFree_bytes) / node_memory_SwapTotal_bytes * 100 > 85 and delta(node_vmstat_pswpin[10m]) > 0)
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      description: "{{ $labels.instance }} swap usage {{ $value }}%"
+      value: "{{ $value }}%"
+
+  - alert: High RAM usage
+    expr: floor((((node_memory_MemTotal_bytes{team!~"oracle"} - node_memory_MemFree_bytes - node_memory_Cached_bytes) / (node_memory_MemTotal_bytes) * 100)) > 89)  and node_memory_MemFree_bytes < 11811160064
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      description: "{{ $labels.instance }} RAM usage {{ $value }}%"
+      value: "{{ $value }}%"
+
+  - alert: High CPU usage
+    expr: 100 - floor(avg by (instance, environment) (rate(node_cpu_seconds_total{mode="idle"}[3m])) * 100) > 89
+    for: 5m
+    labels:
+      severity: warning
+      route: blackhole
+    annotations:
+      description: "{{ $labels.instance }} CPU usage above {{ $value }}%"
+      value: "{{ $value }}%"
+...
