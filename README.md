@@ -38,7 +38,9 @@ grafana-vb-1 — визуализация метрик
 ![Архитектура проекта](screenshots/architecture.png)
 
 📂 Структура репозитория
-my-devops-project/
+
+my-devops/sre-project/
+
 │
 ├── app/                     # Python приложение
 │   ├── registrator/         # основное приложение и его Docker образ
