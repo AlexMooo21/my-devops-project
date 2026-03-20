@@ -29,9 +29,12 @@ prometheus-vb-1 — сбор метрик + alerting (telegram)
 
 grafana-vb-1 — визуализация метрик
 
-📷 Диаграмма архитектуры:
+📷 Макет архитектуры:
+
 ![Архитектура проекта](screenshots/maket2.png)
 
+📷 Диаграмма архитектуры:
+![Архитектура проекта](screenshots/architecture.png)
 
 📂 Структура репозитория
 mydevopspet/
