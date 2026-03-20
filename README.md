@@ -34,39 +34,39 @@ grafana-vb-1 — визуализация метрик
 ![Архитектура проекта](screenshots/maket2.png)
 
 📷 Диаграмма архитектуры:
+
 ![Архитектура проекта](screenshots/architecture.png)
 
 📂 Структура репозитория
-mydevopspet/
+my-devops-project/
 │
-├── app/                # Python приложение (registrator + payload generator)
-├── dns/                # конфигурация DNS (Bind)
-├── monitoring/         # Prometheus, exporters, alerting
-├── grafana/            # dashboards и настройки Grafana
-├── gitlab/             # конфигурация GitLab
-├── docker/             # Dockerfile и docker-compose
-├── screenshots/        # скриншоты проекта
+├── app/                     # Python приложение
+│   ├── registrator/         # основное приложение
+│   ├── payload_generator/   # генератор данных
+│   └── docker/              # Dockerfile и docker-compose
+│
+├── dns/                     # конфигурация DNS (Bind)
+│
+├── monitoring/              # мониторинг и алертинг
+│   ├── prometheus/          # конфигурация Prometheus
+│   ├── grafana/             # dashboards и настройки Grafana
+│   └── alerting/            # алерты и Telegram-бот
+│
+├── screenshots/             # скриншоты проекта (Grafana, алерты и т.д.)
+│
 └── README.md
 
 ⚙️ Технологии
 
-Python 3
-
-MySQL
-
-GitLab CE
-
-Bind DNS
-
-Prometheus
-
-Grafana
-
-Node Exporter
-
-Blackbox Exporter
-
-Docker / Docker Compose
+· Python 3
+· MySQL
+· GitLab CE
+· Bind DNS
+· Prometheus
+· Grafana
+· Node Exporter
+· Blackbox Exporter
+· Docker / Docker Compose
 
 📊 Мониторинг
 
