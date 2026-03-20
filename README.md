@@ -47,14 +47,10 @@ my-devops-project/
 
 │   └── payload_generator/   # генератор данных и его Docker образ
 
-│  
-
+│    
 │
-
 ├── dns/                     # конфигурация DNS (Bind)
-
 │
-
 ├── monitoring/              # мониторинг и алертинг
 
 │   ├── prometheus/          # конфигурация Prometheus
