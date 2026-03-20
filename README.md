@@ -1,7 +1,7 @@
 # Devops/SRE Project
 📌 Описание
 
-DevOps пет-проект, демонстрирующий построение инфраструктуры из нескольких виртуальных машин с локальным DNS, мониторингом, алертингом и контейнеризацией Python-приложения.
+DevOps/SRE пет-проект, демонстрирующий построение инфраструктуры из нескольких виртуальных машин с локальным DNS, мониторингом, алертингом и контейнеризацией Python-приложения.
 
 Проект включает:
 
@@ -41,9 +41,9 @@ grafana-vb-1 — визуализация метрик
 my-devops-project/
 │
 ├── app/                     # Python приложение
-│   ├── registrator/         # основное приложение
-│   ├── payload_generator/   # генератор данных
-│   └── docker/              # Dockerfile и docker-compose
+│   ├── registrator/         # основное приложение и его Docker образ
+│   └── payload_generator/   # генератор данных и его Docker образ
+│  
 │
 ├── dns/                     # конфигурация DNS (Bind)
 │
@@ -59,28 +59,29 @@ my-devops-project/
 ⚙️ Технологии
 
 · Python 3
-· MySQL
+· PostgreSQL
 · GitLab CE
 · Bind DNS
 · Prometheus
 · Grafana
 · Node Exporter
 · Blackbox Exporter
+· Bind Exporter
 · Docker / Docker Compose
 
 📊 Мониторинг
 
 Реализовано:
 
-Сбор метрик со всех виртуальных машин (Node Exporter)
+· Сбор метрик со всех виртуальных машин (Node Exporter)
 
-Проверка доступности приложения (Blackbox Exporter)
+· Проверка доступности приложения (Blackbox Exporter)
 
-Мониторинг DNS (Bind Exporter)
+· Мониторинг DNS (Bind Exporter)
 
-Визуализация в Grafana
+· Визуализация в Grafana
 
-Алертинг через Telegram-бота
+· Алертинг через Telegram-бота
 
 📷 Примеры:
 
